@@ -234,11 +234,13 @@ public:
     }
 };
 
-class Node {
-public:
-    xstring suggestion;
-    int next;
-};
+namespace symspellcpppy {
+    class Node {
+    public:
+        xstring suggestion;
+        int next;
+    };
+}
 
 class Entry {
 public:
@@ -249,7 +251,7 @@ public:
 class SuggestionStage {
 private:
     std::unordered_map<int, Entry> Deletes;
-    ChunkArray<Node> Nodes;
+    ChunkArray<symspellcpppy::Node> Nodes;
 
 public:
     explicit SuggestionStage(int initialCapacity) {
@@ -276,7 +278,7 @@ public:
         entry.count++;
         entry.first = Nodes.Count;
         Deletes[deleteHash] = entry;
-        Node item;
+        symspellcpppy::Node item;
         item.suggestion = std::move(suggestion);
         item.next = next; // 1st semantic errors, this should not be Nodes.Count
         Nodes.Add(item);
