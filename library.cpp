@@ -354,8 +354,6 @@ namespace symspellcpppy
             return std::vector<SuggestItem>{}; // Dictionary is empty
 
         int skip = 0;
-        if (maxEditDistance > maxDictionaryEditDistance)
-            throw std::invalid_argument("Distance too large");
 
         xstring lower_input;
 
